@@ -1,0 +1,22 @@
+{
+  "name": "nodejsexpert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmayornavarro/nodeJSExpert.git"
+  },
+  "author": "christian mayor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmayornavarro/nodeJSExpert/issues"
+  },
+  "homepage": "https://github.com/cmayornavarro/nodeJSExpert#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
