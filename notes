@@ -1,3 +1,5 @@
+
+
 npm init
 npm install
 npm install express --save
@@ -5,3 +7,28 @@ npm install -g nodemon
 
 create a file index.js and put some code
 nodemon index.js
+
+Clusters:
+
+NodeJs single-threaded nature is by default using a single core of a processor. Therefore NodeJs introduced a cluster module to spawn processes. “Cluster” was introduced to scale an application execution on multiple processor cores by creating worker processes. Worker processes share a single port, therefore, requests are routed through a single port.
+
+
+impacta mucho si require("express"); es puesto mas abajo como en un else por ejemplo?
+console.log(result) o console.log(`${result}`)
+
+
+
+withForks.js
+
+es para saber como usar un childprocess solo para api que son muy muy lentas y que no
+son llamadas muchas veces
+
+see https://www.youtube.com/watch?v=w1IzRF6AkuI&list=PLiIKaud-klRGn7V0myJaSZzByPEX7VyiB
+
+
+****************
+streaming
+https://www.sitepoint.com/basics-node-js-streams/
+Streams are unix pipes that let you easily read data from a source and pipe it to a destination. Simply put, a stream is nothing but an EventEmitter and implements some specials methods. Depending on the methods implemented, a stream becomes Readable, Writable, or Duplex (both readable and writable). Readable streams let you read data from a source while writable streams let you write data to a destination.
+
+If you have already worked with Node.js, you may have come across streams. For example, in a Node.js based HTTP server, request is a readable stream and response is a writable stream. You might have used fs module which lets you work with both readable and writable file streams.
