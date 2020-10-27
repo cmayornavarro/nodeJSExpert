@@ -32,3 +32,20 @@ https://www.sitepoint.com/basics-node-js-streams/
 Streams are unix pipes that let you easily read data from a source and pipe it to a destination. Simply put, a stream is nothing but an EventEmitter and implements some specials methods. Depending on the methods implemented, a stream becomes Readable, Writable, or Duplex (both readable and writable). Readable streams let you read data from a source while writable streams let you write data to a destination.
 
 If you have already worked with Node.js, you may have come across streams. For example, in a Node.js based HTTP server, request is a readable stream and response is a writable stream. You might have used fs module which lets you work with both readable and writable file streams.
+
+**************** Important ****************
+End of Data
+When you don’t have more data to write you can simply call end() to notify the stream that you have finished writing. Assuming res is an HTTP response object, you often do the following to send the response to browser:
+
+res.write('Some Data!!');
+res.end('Ended.');
+When end() is called and every chunk of data has been flushed, a finish event is emitted by the stream. Just note that you can’t write to the stream after calling end(). For example, the following will result in an error.
+
+res.write('Some Data!!');
+res.end();
+res.write('Trying to write again'); //Error!
+
+
+
+GraphQL:
+https://www.youtube.com/watch?v=Vs_CBxCfFHk
