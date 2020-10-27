@@ -92,10 +92,11 @@ const server = app.listen(port, () => {
 
 
 
-/*
-QUERY 1
-query getSingleCourse($courseID: Int!){
-  course(id: $courseID){
+
+
+/*QUERY 2
+query getCourses($courseTopic: String!){
+  courses(topic: $courseTopic){
     title
     author
     description
@@ -104,6 +105,6 @@ query getSingleCourse($courseID: Int!){
   }
 }
 
-
-{"courseID": 1}
+{"courseTopic": "topic 2"}
 */
+
