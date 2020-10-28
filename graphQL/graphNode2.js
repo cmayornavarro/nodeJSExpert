@@ -10,6 +10,10 @@ var schema = buildSchema(`
 		courses(topic: String): [Course]
 	}
 
+	type Mutation {
+		updateCourseTopic(id: Int!, topic: String!): Course 
+	}
+
 	type Course{
 		id: Int
 		title: String
@@ -63,10 +67,24 @@ var getCourses = function (args) {
 	}
 };
 
+var updateCourseTopic = function({id,topic}){
+	coursesData.map(course => {
+		if(course.id === id){
+			course.topic = topic;
+			return course;
+		}
+	})
+	return coursesData.filter(course => course.id === id)[0]; 
+
+}
+
+
 // Root resolver
 var root = {
 	course: getCourse,
 	courses: getCourses,
+	updateCourseTopic: updateCourseTopic
+
 };
 
 // Create an express server and GraphQL endpoint
@@ -130,5 +148,28 @@ fragment courseFields on Course {
 {
   "courseID1": 1,
   "courseID2": 2
+}
+*/
+
+
+/* mutation query
+mutation noMatterNameHere($id: Int!, $topic: String!){
+  #updateCourseTopic is declared in root and in ar schema = buildSchema(...)
+  updateCourseTopic(id: $id, topic:$topic){
+    ...courseFields
+  }
+}
+
+fragment courseFields on Course {
+  title
+  author
+  description
+  topic
+  url
+}
+
+{
+  "id": 1,
+  "topic": "my new topic fuck"
 }
 */
