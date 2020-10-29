@@ -8,6 +8,7 @@ var schema = buildSchema(`
 	type Query{
 		course(id: Int!): Course
 		courses(topic: String): [Course]
+		coursesAuthor(topic: String): [Course]
 	}
 
 	type Mutation {
@@ -79,11 +80,22 @@ var updateCourseTopic = function({id,topic}){
 }
 
 
+var coursesAuthor = function (args) {
+	if (args.topic) {
+		var topic = args.topic;
+		return coursesData.filter(course => course.topic === topic) ;
+	} else {
+		return coursesData;
+	}
+};
+
+
 // Root resolver
 var root = {
 	course: getCourse,
 	courses: getCourses,
 	updateCourseTopic: updateCourseTopic
+	coursesAuthor : coursesAuthor
 
 };
 
